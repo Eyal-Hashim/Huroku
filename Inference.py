@@ -4,7 +4,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import json
-from sklearn.linear_model import LinearRegression
+import os
 
 app = Flask(__name__)
 # model_path = "C:/Users/DELL/Documents/Jupyter notebooks/Flask/reg_model"
@@ -36,4 +36,10 @@ def predict_many():
 
 
 if __name__ == "__main__":
-    app.run("0.0.0.0", debug=True)
+    #app.run("0.0.0.0", debug=True)
+    port = os.environ.get('PORT')
+
+    if port:
+        app.run('0.0.0.0', port = int(port))
+    else:
+        app.run()

@@ -6,8 +6,10 @@ import pandas as pd
 import json
 
 app = Flask(__name__)
-model_path = "C:/Users/DELL/Documents/Jupyter notebooks/Flask/reg_model"
-model = pickle.load(open(model_path, 'rb'))
+# model_path = "C:/Users/DELL/Documents/Jupyter notebooks/Flask/reg_model"
+# model = pickle.load(open(model_path, 'rb'))
+file_name = "reg_model"
+model = pickle.load(open(file_name, 'rb'))
 
 
 @app.route('/')

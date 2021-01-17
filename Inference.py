@@ -4,6 +4,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import json
+from sklearn.linear_model import LinearRegression
 
 app = Flask(__name__)
 # model_path = "C:/Users/DELL/Documents/Jupyter notebooks/Flask/reg_model"
@@ -19,8 +20,8 @@ def home():
 
 @app.route('/predict')
 def predict():
-    data = np.array([[request.args.get('GDP'),request.args.get('social_support'),request.args.get('Life_expectancy'),
-                      request.args.get('Freedom'),request.args.get('Generosity'),request.args.get('corruption')]])
+    data = np.array([[float(request.args.get('GDP')),float(request.args.get('social_support')),float(request.args.get('Life_expectancy')),
+                      float(request.args.get('Freedom')),float(request.args.get('Generosity')),float(request.args.get('corruption'))]])
     y_pred = model.predict(data).tolist()[0]
     return jsonify(y_pred)
 
